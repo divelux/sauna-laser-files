@@ -6,8 +6,23 @@ Free, parametric laser-cutting files for the sauna, from [DIVELUX](https://divel
 |---|---|---|
 | ![SAUNA door sign](sauna-door-sign/img/sauna-door-sign-M-300mm.png) | **[SAUNA door sign](sauna-door-sign/)**: cut outline, scored border, engraved letters. Three sizes: 200 × 75, 300 × 112.5 and 400 × 150 mm. Any word you like with the script. | 3–6 mm plywood or solid wood |
 | ![Plywood hat stand](sauna-hat-stand-plywood/img/stand-assembled.png) | **[Plywood sauna hat drying stand](sauna-hat-stand-plywood/)**: two arch ribs that cross slot-in-slot plus a base ring. 186 × 186 × 201 mm assembled. The same outline as the 3D-printed stand; the slots follow your sheet thickness. | 3 or 4 mm plywood |
+| ![Rules board](sauna-rules-board/img/sauna-rules-board-M-300mm.png) | **[Sauna rules board](sauna-rules-board/)**: SAUNA RULES and six short rules with bell-hat marks; cut outline, scored border, engraved text. Two sizes: 300 × 210 and 450 × 315 mm. Your own rules from a text file. | 3–6 mm plywood or solid wood |
+| ![Heat ladder](sauna-heat-ladder-plank/img/heat-ladder-plank-sizes.png) | **[Heat ladder wall plank](sauna-heat-ladder-plank/)**: a °F / °C scale with marks at 212, 190, 160 and 105 °F (100, 88, 71, 41 °C) and a footnote: illustrative, not a measurement. 80 × 320 and 110 × 450 mm. | 3–6 mm light wood |
 
 Each folder has `svg/`, `dxf/`, preview pictures in `img/`, a `LISTING.md` with cutting notes, and the Python source. The shared helper `dvx_laser.py` sits in this folder.
+
+## Woodworking plans
+
+Shop projects for the sauna, each as a two-page PDF (Letter landscape) with views, every dimension in inches and millimeters, a cut list, hardware, assembly steps and a safety box. Three of them come with full-size SVG/DXF templates.
+
+| | Plan | Lumber |
+|---|---|---|
+| ![Peg rail](sauna-hat-peg-rail/img/peg-rail-iso.png) | **[Peg rail for sauna hats](sauna-hat-peg-rail/)**: 36 in rail, four dowel pegs tilted up 10°, screws hidden under plugs. Drilling template (full length and a half for small lasers) plus a 10° drilling wedge. | 1x4, 3/4 in dowel |
+| ![Headrest](sauna-bench-headrest/img/headrest-iso.png) | **[Bench headrest](sauna-bench-headrest/)**: 14 × 12 in, wedge sides rising from 1 to 3-1/2 in, seven slats, screws from below through cleats. Full-size side template. | 1x4, 1x2, 3/4 in strip |
+| ![Backrest](sauna-bench-backrest/img/backrest-iso.png) | **[Bench backrest](sauna-bench-backrest/)**: freestanding, 20 in wide, leans back 12°, two braced triangle frames that stand with their back to the wall, seven slats. | 1x3, 1x2 |
+| ![Bucket stand](sauna-bucket-stand/img/bucket-stand-iso.png) | **[Bucket stand](sauna-bucket-stand/)**: 13 × 14 in, 4-1/4 in high, slatted, on four feet. Full-size runner template. | 1x4, 1x3, 3/4 in strip |
+
+The plans are built from Python (`dvx_plans.py`: parts as boxes, projected views, dimension lines, the cut list) and printed to PDF with Playwright: `./build_plans.sh`. They are hobby plans, not engineered drawings: build at your own risk, and check that nothing can burn or pinch.
 
 ## File conventions
 
@@ -30,6 +45,7 @@ Install the tools once: `pip install manifold3d fonttools numpy pillow`. Then ed
 ```
 python3 sauna-door-sign/door_sign.py BANYA        # the sign with your own word, all three sizes
 python3 sauna-hat-stand-plywood/stand_laser.py 3.4 # the stand for sheet that measures 3.4 mm
+python3 sauna-rules-board/rules_board.py myrules.txt  # title on the first line, then up to 8 rules
 ```
 
 Text needs a bold TrueType font. Set the `DVX_FONT` environment variable to a .ttf file, or let the script pick a system font.
